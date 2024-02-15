@@ -20,6 +20,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements.txt /usr/src/app/
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
+# Create log directory and file
+RUN mkdir -p /var/log/pyadselfservice
+RUN touch /var/log/pyadselfservice/django_request.log
+
 # Copy the current directory contents into the container at /usr/src/app
 COPY . /usr/src/app/
 
